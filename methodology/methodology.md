@@ -2,13 +2,11 @@
 
 SIDSight is a small exploratory project designed to bring together selected country indicators and policy information relevant to Small Island Developing States.
 
-The first version focuses on eight SIDS across the Pacific, Caribbean and Atlantic, Indian Ocean and South China Sea regions.
+The first version focuses on eight SIDS across the Pacific, Caribbean and Atlantic, Indian Ocean and South China Sea regions (AIS).
 
 ## Approach
 
-The project uses a limited number of publicly available indicators rather than attempting to produce a comprehensive country assessment.
-
-The indicators are intended to provide a simple starting point for comparing selected aspects of:
+The project uses a limited number of publicly available indicators that are intended to provide a simple starting point for comparing selected aspects:
 
 * food import exposure;
 * the role of agriculture, forestry and fisheries in the economy;
