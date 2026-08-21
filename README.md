@@ -3,13 +3,18 @@
 
 SIDSight is a small exploratory project looking at **how public data and policy information can support preparation for SIDS-focused discussions**.
 
+![SIDSight Overview](dashboard/sids-overview.jpeg)
+## Explore the project
+
+- **SIDS Overview** — cross-country comparison of selected agrifood, resource, digital and climate indicators
+- **Country Brief** — country-level context for policy discussions
+- **FAO Connections** — links between selected country issues and FAO's SIDS-related work
+
 The first version covers 8 Small Island Developing States across the Pacific, Caribbean, and Atlantic, Indian Ocean and South China Sea (AIS) regions.
 
 ![Status](https://img.shields.io/badge/status-in_progress-yellow)
 ![Tools](https://img.shields.io/badge/built_with-Python_%7C_Power_BI_%7C_ArcGIS-blue)
 ![Focus](https://img.shields.io/badge/focus-SIDS_agrifood_systems-2E8B57)
-
----
 
 ## Why I built this
 
