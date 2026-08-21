@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIDSight</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f7f9;
+      color: #20252b;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: auto;
+      padding: 60px 28px;
+    }
+
+    .hero {
+      padding: 54px 0 38px;
+    }
+
+    h1 {
+      font-size: 52px;
+      margin: 0 0 8px;
+      letter-spacing: -1.5px;
+    }
+
+    .subtitle {
+      font-size: 21px;
+      color: #606870;
+      max-width: 720px;
+      line-height: 1.5;
+    }
+
+    .nav {
+      margin: 30px 0 45px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #20252b;
+      background: white;
+      border: 1px solid #dfe3e8;
+      padding: 11px 17px;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+
+    .nav a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .panel {
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+      margin-bottom: 36px;
+    }
+
+    .panel img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .small {
+      color: #6d747c;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 60px;
+      color: #7b8188;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <h1>SIDSight</h1>
+    <p class="subtitle">
+      An independent exploration of agrifood, resource, digital and climate
+      indicators across selected Small Island Developing States.
+    </p>
+
+    <div class="nav">
+      <a href="#overview">SIDS Overview</a>
+      <a href="#country">Country Brief</a>
+      <a href="#fao">FAO Connections</a>
+      <a href="methodology/methodology.md">Methodology</a>
+    </div>
+  </section>
+
+  <section class="panel" id="overview">
+    <h2 class="section-title">SIDS Overview</h2>
+    <p class="small">
+      A comparative view of selected SIDS across the Pacific, Caribbean and AIS regions.
+    </p>
+
+    <img src="dashboard/sids-overview.png" alt="SIDSight Power BI Overview">
+  </section>
+
+  <section class="panel" id="country">
+    <h2 class="section-title">Country Brief</h2>
+    <p class="small">
+      Country-level context and indicators for policy discussions.
+      This section will be added in the next project stage.
+    </p>
+  </section>
+
+  <section class="panel" id="fao">
+    <h2 class="section-title">FAO Connections</h2>
+    <p class="small">
+      Selected links to FAO SIDS initiatives, dialogue themes and areas of work.
+      This section will be developed as the project progresses.
+    </p>
+  </section>
+
+  <footer>
+    Independent portfolio project. SIDSight is not an official FAO or UNESCO product.
+  </footer>
+
+</div>
+
+</body>
+</html>
