@@ -1,1 +1,9 @@
-
+﻿Country,Region,Latitude,Longitude,Climate_Vulnerability,Food_Import_Exposure,Agri_Forestry_Fishing_VA,Internet_Use,Policy_Lens
+Kiribati,Pacific,1.35,173,0.527603834,41.44440628,23.16551221,89.44029999,Fisheries and blue economy
+Maldives,AIS,4.17,73.51,0.534238664,21.24392644,4.590793783,85.23999786,Food security and agricultural resilience
+Marshall Islands,Pacific,7.09,171.38,0.498858371,,19.93596491,65.915802,Fisheries and blue economy
+Naoero,Pacific,-0.55,166.92,0.502089897,,,83.01170349,Food security and local production
+Papua New Guinea,Pacific,-9.48,147.15,0.54928368,16.48880466,17.0217937,18.81159973,Agrifood investment and trade
+Saint Kitts and Nevis,Caribbean,17.3,-62.73,0.47284729,25.38489816,1.289630072,76.88400269,Climate and land resilience
+Saint Lucia,Caribbean,14.01,-60.99,0.344941795,27.64304491,1.657743573,68.20500183,Fisheries and climate resilience
+Tuvalu,Pacific,-8.52,179.2,0.572510899,21.54018429,15.94085593,35.20000076,Agrifood investment and trade
