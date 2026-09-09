@@ -3,7 +3,7 @@
 
 SIDSight is a small exploratory project looking at **how public data and policy information can support preparation for SIDS-focused discussions**.
 
-![SIDSight Overview](dashboard/sids-overview.PNG)
+![SIDSight Overview](dashboard/sids-overview.png)
 ## Explore the project
 
 - **SIDS Overview** — cross-country comparison of selected agrifood, resource, digital and climate indicators
