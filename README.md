@@ -12,7 +12,6 @@ SIDSight is a small exploratory project looking at **how public data and policy 
 
 The first version covers 8 Small Island Developing States across the Pacific, Caribbean, and Atlantic, Indian Ocean and South China Sea (AIS) regions.
 
-![Status](https://img.shields.io/badge/status-in_progress-yellow)
 ![Tools](https://img.shields.io/badge/built_with-Python_%7C_Power_BI_%7C_ArcGIS-blue)
 ![Focus](https://img.shields.io/badge/focus-SIDS_agrifood_systems-2E8B57)
 
@@ -42,7 +41,7 @@ I chose these countries because they span the three main SIDS regions and are co
 
 | Tool | What it's doing here |
 |---|---|
-| Python / pandas | Filtering World Bank and FAO data down to these 8 countries, pulling the latest observation for each indicator, computing per-capita figures, and auditing how current each data point actually is |
+| Python / pandas | Pulling the latest observation for each indicator, computing per-capita figures, and auditing how current each data point actually is |
 | Power BI | Three linked pages — SIDS Overview, Country Brief, FAO Connections |
 | ArcGIS | Adds a simple geographic view of the countries and selected indicators |
 | GitHub | Documents the data, methodology and project development in one place |
@@ -52,16 +51,14 @@ I chose these countries because they span the three main SIDS regions and are co
 ```
 SIDSight/
 ├── data/            raw and processed indicator data
-├── notebooks/        the pandas workflow: filter → latest observation → derived indicators → audit → merge
 ├── dashboard/         Power BI page screenshots
 ├── gis/                the country map
-├── digest/            a one-page AI-assisted SIDS Digest prototype
 └── methodology/      indicator definitions, sources, and the reasoning behind every design choice
 ```
 
-## Methodology, in short
+## Methodology
 
-The project deliberately uses a small number of indicators rather than trying to build a comprehensive SIDS index or country ranking. The whole methodology can be found in [`methodology/methodology.md`](methodology/methodology.md).
+The whole methodology can be found in [`methodology/methodology.md`](methodology/methodology.md).
 
 
 > **Disclaimer:** SIDSight is an independent portfolio project and is not an official FAO or UNESCO product.
