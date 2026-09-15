@@ -124,18 +124,16 @@
     /* ---------- nav ---------- */
 
     .site-nav {
-  border-bottom: none;
-  background: var(--paper);
-}
+      border-bottom: none;
+      background: var(--paper);
+    }
 
-.nav-inner {
-  min-height: 58px;
-}
-
-    .brand {
-      font-size: 17px;
-      letter-spacing: 0.3px;
-      text-decoration: none;
+    .nav-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
 
     .kicker {
@@ -528,20 +526,20 @@
     }
 
     footer {
-  border-top: 1px solid var(--line);
-  margin-top: 26px;
-  padding: 16px 0 28px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  color: var(--muted);
-}
+      border-top: 1px solid var(--line);
+      margin-top: 26px;
+      padding: 16px 0 28px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+    }
 
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-}
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
 
     /* ---------- responsive ---------- */
 
@@ -611,13 +609,11 @@
   <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
   <nav class="site-nav">
-  <div class="wrap nav-inner">
-    <span class="kicker">Independent data &amp; policy case study</span>
-    <a class="back-home" href="https://yuxizhou2177.github.io/">
-      &larr; yuxizhou2177.github.io
-    </a>
-  </div>
-</nav>
+    <div class="wrap nav-inner">
+      <span class="kicker">Independent data &amp; policy case study</span>
+      <a class="back-home" href="https://yuxizhou2177.github.io/">&larr; yuxizhou2177.github.io</a>
+    </div>
+  </nav>
 
   <header class="hero" id="top">
     <div class="wrap">
