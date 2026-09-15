@@ -4,451 +4,562 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Across DDCN | from six portfolios to three messages</title>
   <meta name="description"
-    content="SIDSight — agrifood and resilience indicators across 8 Small Island Developing States." />
-  <title>SIDSight | Agrifood dashboard across 8 SIDS</title>
-
-  <link rel="icon" type="image/png" href="favicon.png">
-
+    content="A short public-facing synthesis of FAO's DDCN portfolios for policymakers, partners and media." />
+  <meta property="og:title" content="Across DDCN" />
+  <meta property="og:description" content="From six portfolios to three messages." />
+  <link rel="icon" type="image/png" href="https://yuxizhou2177.github.io/favicon.png" />
+  <link rel="apple-touch-icon" href="https://yuxizhou2177.github.io/apple-touch-icon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink: #2f2a24;
-      --ink-soft: #4a443c;
-      --muted: #746c61;
-      --paper: #fbf9f4;
-      --paper-2: #fffdf9;
-      --line: #e8ded0;
-      --line-firm: #d8ccb8;
-
-      --gold: #b8862f;
-      --gold-soft: rgba(184, 134, 47, 0.42);
-      --gold-wash: rgba(184, 134, 47, 0.07);
-
-      --teal: #2f5259;
-      --teal-deep: #24444a;
-      --teal-wash: rgba(47, 82, 89, 0.06);
-
-      --c-evidence: #b8c9cd;
-      --c-context: #cbd493;
-      --c-connections: #e2cfca;
-
-      --radius: 4px;
+      --paper: #F6F3EC;
+      --card: #FBF9F4;
+      --ink: #16191B;
+      --ink-mid: #49534F;
+      --ink-soft: #7E8781;
+      --rule: #DCD5C6;
+      --sea: #1D5A61;
+      --clay: #B0532C;
+      --ochre: #B8862F;
+      --serif: Constantia, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, 'Noto Serif SC', serif;
+      --maxw: 1080px;
     }
 
     * {
-      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
     }
 
     html {
-      scroll-behavior: smooth;
+      scroll-behavior: smooth
     }
 
     body {
-      margin: 0;
       background: var(--paper);
       color: var(--ink);
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.6;
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden
     }
 
     a {
       color: inherit;
-    }
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 3px;
+      text-decoration: none
     }
 
     .wrap {
-      width: min(1080px, calc(100% - 48px));
+      max-width: var(--maxw);
       margin: 0 auto;
+      padding: 0 clamp(1.2rem, 5vw, 3rem)
     }
 
-    .meta {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 13px;
-      color: var(--muted);
-      letter-spacing: 0.2px;
-    }
+    @media (pointer:fine) {
 
-    .arrow {
-      display: inline-block;
-      margin-left: 7px;
-      transition: transform 0.18s ease;
-    }
-
-    a:hover .arrow {
-      transform: translateX(3px);
-    }
-
-    /* ---------- cursor follower ---------- */
-
-    .cursor-ring {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 26px;
-      height: 26px;
-      margin: -13px 0 0 -13px;
-      border: 1px solid var(--line-firm);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0;
-      transition: opacity 0.25s ease, width 0.2s ease, height 0.2s ease,
-        margin 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-    }
-
-    .cursor-ring.is-visible {
-      opacity: 1;
-    }
-
-    .cursor-ring.is-active {
-      width: 42px;
-      height: 42px;
-      margin: -21px 0 0 -21px;
-      border-color: var(--gold);
-      background: var(--gold-wash);
-    }
-
-    @media (hover: none),
-    (pointer: coarse) {
-      .cursor-ring {
-        display: none;
+      body,
+      a,
+      button {
+        cursor: none
       }
     }
 
-    /* ---------- nav ---------- */
-
-    .site-nav {
-      border-bottom: none;
-      background: var(--paper);
+    .cur {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999
     }
 
-    .nav-inner {
-      min-height: 58px;
+    .cur-core {
+      width: 5px;
+      height: 5px;
+      background: var(--ink);
+      opacity: .72;
+      transition: background .3s
+    }
+
+    .cur-frame {
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--ink);
+      animation: glim 3.4s ease-in-out infinite;
+      transition: width .35s cubic-bezier(.22, 1, .36, 1), height .35s cubic-bezier(.22, 1, .36, 1), border-color .3s
+    }
+
+    @keyframes glim {
+
+      0%,
+      100% {
+        opacity: .14
+      }
+
+      50% {
+        opacity: .4
+      }
+    }
+
+    .cur-frame.grow {
+      animation: none;
+      opacity: .6;
+      width: 40px;
+      height: 40px;
+      border-color: var(--clay)
+    }
+
+    .cur-core.grow {
+      background: var(--clay)
+    }
+
+    @media(max-width:900px) {
+      .cur {
+        display: none
+      }
+
+      body,
+      a,
+      button {
+        cursor: auto
+      }
+    }
+
+    /* ---------- top bar ---------- */
+
+    .topbar {
+      padding: 20px 0 0;
+    }
+
+    .topbar .wrap {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       justify-content: space-between;
-      gap: 24px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .topbar a {
+      color: #6B6E75;
+      text-decoration: none;
+      font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 13.5px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .topbar a:hover {
+      border-bottom-color: #6B6E75;
     }
 
     .kicker {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
       font-size: 11.5px;
-      letter-spacing: 0.08em;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: #B8862F;
       font-weight: 600;
     }
 
-    .back-home {
-      font-size: 14px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.15s ease;
-    }
-
-    .back-home:hover {
-      color: var(--gold);
-    }
 
     /* ---------- hero ---------- */
 
     .hero {
-      padding: 30px 0 30px;
-      border-bottom: 1px solid var(--line);
+      padding: 22px 0 30px;
     }
 
     .hero h1 {
-      margin: 14px 0 6px;
+      font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+      font-weight: 700;
+      color: #1C2B3A;
+
       font-size: clamp(34px, 4.6vw, 50px);
       line-height: 1.1;
-      font-weight: 700;
+
+      margin: 14px 0 6px;
       letter-spacing: -0.01em;
     }
 
-    .hero .lede {
-      margin: 16px 0 0;
-      max-width: 42em;
-      font-size: clamp(19px, 2.3vw, 24px);
-      line-height: 1.34;
-      font-weight: 400;
-      color: var(--ink-soft);
+    .hero .sub {
+      font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+      font-style: italic;
+      color: #1D5A61;
+
+      font-size: 18px;
+      line-height: 1.3;
+
+      margin: 0 0 16px;
+      max-width: none;
     }
 
-    .hero .question {
-      margin: 14px 0 0;
-      max-width: 40em;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--muted);
+    .hero .sub2 {
+      font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+
+      color: #33363C;
+      max-width: 840px;
+
+      margin: 0;
     }
 
-    .pill-row {
-      margin: 24px 0 0;
+    .hero-rule {
+      border: 0;
+      border-top: 1px solid rgba(184, 134, 47, 0.30);
+      margin: 28px 0 0;
+      width: 100%;
+    }
+
+    .audline {
+      margin-top: 1rem;
+      font-size: .75rem;
+      letter-spacing: .14em;
+      color: var(--ink-soft)
+    }
+
+    .orn {
+      max-width: var(--maxw);
+      margin: 0 auto;
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .pill-row+.pill-row {
-      margin-top: 10px;
-    }
-
-    .pill {
-      display: inline-flex;
       align-items: center;
-      padding: 5px 14px;
-      border-radius: 999px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 12.5px;
-      letter-spacing: 0.2px;
+      gap: 1rem;
+      padding: 0 clamp(1.2rem, 5vw, 3rem)
     }
 
-    .pill.fact {
-      border: 1px solid var(--gold-soft);
-      background: var(--gold-wash);
-      color: var(--gold);
-      font-weight: 700;
+    .orn::before,
+    .orn::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule)
     }
 
-    .pill.tool {
-      border: 1px solid var(--line-firm);
-      background: var(--paper-2);
-      color: var(--muted);
+    .orn i {
+      width: 6px;
+      height: 6px;
+      transform: rotate(45deg);
+      background: var(--clay);
+      flex-shrink: 0
     }
 
-    /* ---------- sections ---------- */
+    .orn.s i {
+      background: var(--sea)
+    }
 
     section {
-      padding: 60px 0;
-      border-bottom: 1px solid var(--line);
+      padding: clamp(2.6rem, 6.5vh, 4rem) 0
     }
 
-    #methods {
-      padding: 28px 0 8px;
-      border-bottom: none;
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: 240px minmax(0, 1fr) 220px;
-      gap: 40px;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-
-    h2.section-title {
-      margin: 0;
-      font-size: clamp(26px, 3.2vw, 34px);
-      line-height: 1.1;
-      font-weight: 400;
-      letter-spacing: -0.7px;
-    }
-
-    .section-copy {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.75;
-      max-width: 40em;
-    }
-
-    /* ---------- CTA blocks (shared by report + map) ---------- */
-
-    .cta-block {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      white-space: nowrap;
-      min-height: 50px;
-      padding: 0 18px;
-      border: 1px solid var(--teal);
-      border-radius: var(--radius);
-      background: transparent;
-      color: var(--teal);
-      text-decoration: none;
-      font: 400 16px/1 Georgia, "Times New Roman", serif;
-      transition: background 0.18s ease, color 0.18s ease;
-    }
-
-    .cta-block:hover {
-      background: var(--teal);
-      color: #fff;
-    }
-
-    /* ---------- dashboard ---------- */
-
-    .dashboard-panel {
-      background: var(--paper-2);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-
-    .dashboard-toolbar {
-      padding: 0 4px;
+    .sechead {
       display: flex;
+      align-items: baseline;
+      gap: .9rem;
       flex-wrap: wrap;
-      border-bottom: 1px solid var(--line);
+      margin-bottom: 1.3rem
     }
 
-    .tab-button {
-      appearance: none;
-      border: 0;
-      border-bottom: 2px solid transparent;
-      background: transparent;
-      color: var(--muted);
-      padding: 11px 13px 9px;
-      font: 400 13.5px/1 Arial, Helvetica, sans-serif;
-      cursor: pointer;
-      transition: color 0.15s ease, border-color 0.15s ease;
+    .sechead h2 {
+      font-weight: 400;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      letter-spacing: -.02em
     }
 
-    .tab-button:hover {
-      color: var(--gold);
+    .sechead .num {
+      font-size: .64rem;
+      letter-spacing: .2em;
+      color: var(--clay)
     }
 
-    .tab-button.active {
-      color: var(--ink);
-      border-bottom-color: var(--gold);
-    }
-
-    .preview-frame {
-      background: #f4f1ea;
-    }
-
-    .preview-frame img {
-      display: block;
+    /* 图 */
+    .diagram svg {
       width: 100%;
       height: auto;
-      aspect-ratio: 16 / 9;
-      object-fit: contain;
-      transition: opacity 0.18s ease;
+      display: block
     }
 
-    .preview-frame img.is-changing {
-      opacity: 0;
+    .link {
+      transition: stroke-opacity .3s, stroke-width .3s
     }
 
-    /* ---------- three view cards ---------- */
+    .link.dim {
+      stroke-opacity: .07
+    }
 
-    .views {
+    .link.lit {
+      stroke-opacity: 1;
+      stroke-width: 2.3
+    }
+
+    .node {
+      transition: opacity .3s
+    }
+
+    .node.dim {
+      opacity: .2
+    }
+
+    .capline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: .8rem
+    }
+
+    .pillrow {
+      display: flex;
+      gap: .35rem;
+      flex-wrap: wrap
+    }
+
+    .pcode {
+      font-size: .67rem;
+      letter-spacing: .1em;
+      padding: .2rem .65rem;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      color: var(--ink-soft);
+      background: transparent;
+      transition: all .25s;
+      font-family: var(--serif)
+    }
+
+    .pcode:hover {
+      border-color: var(--sea);
+      color: var(--sea)
+    }
+
+    .diaghint {
+      font-size: .74rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      opacity: .8;
+      min-height: 1.3em;
+      transition: color .25s, opacity .25s;
+      text-align: right;
+      flex: 1
+    }
+
+    .diaghint.on {
+      font-style: normal;
+      opacity: 1;
+      letter-spacing: .01em
+    }
+
+    .diaghint.g-sea {
+      color: var(--sea)
+    }
+
+    .diaghint.g-clay {
+      color: var(--clay)
+    }
+
+    .diaghint.g-och {
+      color: var(--ochre)
+    }
+
+    .diaghint b {
+      font-weight: 400;
+      letter-spacing: .06em
+    }
+
+    .diaghint i {
+      display: block;
+      font-style: italic;
+      opacity: .7;
+      font-size: .94em;
+      margin-top: .1rem
+    }
+
+    .stacked {
+      display: none
+    }
+
+    .stk {
+      border-left: 2px solid var(--rule);
+      padding: .2rem 0 .2rem .9rem;
+      margin-bottom: .9rem
+    }
+
+    .stk h4 {
+      font-weight: 400;
+      font-size: .95rem;
+      margin-bottom: .15rem
+    }
+
+    .stk .codes {
+      font-size: .78rem;
+      color: var(--ink-soft)
+    }
+
+    .stk.b1 {
+      border-color: var(--sea)
+    }
+
+    .stk.b2 {
+      border-color: var(--clay)
+    }
+
+    .stk.b3 {
+      border-color: var(--ochre)
+    }
+
+    @media(max-width:800px) {
+      .diagram svg {
+        display: none
+      }
+
+      .stacked {
+        display: block
+      }
+    }
+
+    /* 卡 */
+    .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 16px;
+      gap: .9rem
     }
 
-    .view {
+    @media(max-width:960px) {
+      .cards {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .mcard {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 11px;
+      box-shadow: 0 4px 14px rgba(60, 50, 35, .04);
+      padding: 1.25rem 1.3rem 1.2rem;
+      display: flex;
+      flex-direction: column;
       position: relative;
-      display: block;
+      transition: border-color .3s
+    }
+
+    .mcard:hover {
+      border-color: var(--ca)
+    }
+
+    .m1 {
+      --ca: var(--sea)
+    }
+
+    .m2 {
+      --ca: var(--clay)
+    }
+
+    .m3 {
+      --ca: var(--ochre)
+    }
+
+    .mtop {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: .4rem
+    }
+
+    .mcard .idx {
+      font-size: .63rem;
+      letter-spacing: .2em;
+      color: var(--ca)
+    }
+
+    .mcard h3 {
+      font-weight: 400;
+      font-size: 1.26rem;
+      line-height: 1.22;
+      letter-spacing: -.015em;
+      margin-bottom: .85rem
+    }
+
+    .mviz {
+      margin: .1rem 0 .95rem
+    }
+
+    .mviz svg {
       width: 100%;
-      text-align: left;
-      appearance: none;
-      cursor: pointer;
-      font-family: inherit;
-      padding: 24px 22px 26px;
-      background: var(--paper-2);
-      border: 1px solid var(--line);
-      border-top: 3px solid var(--accent, var(--line-firm));
-      border-radius: var(--radius);
-      transition: transform 0.18s ease, box-shadow 0.18s ease,
-        background 0.18s ease, border-color 0.18s ease;
+      height: auto;
+      display: block
     }
 
-    .view:nth-child(1) {
-      --accent: var(--c-evidence);
+    .mcard .one {
+      font-size: .93rem;
+      color: var(--ink-mid);
+      line-height: 1.62;
+      margin-bottom: 1rem
     }
 
-    .view:nth-child(2) {
-      --accent: var(--c-context);
+    .ctx {
+      font-size: .79rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      margin-bottom: 1.15rem
     }
 
-    .view:nth-child(3) {
-      --accent: var(--c-connections);
+    .ctx b {
+      font-weight: 400;
+      color: var(--ink-soft);
+      letter-spacing: .06em
     }
 
-    .view:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(47, 42, 36, 0.07);
+    .ev {
+      margin-top: auto;
+      border-top: 1px solid var(--rule);
+      padding-top: .85rem
     }
 
-    .view.active {
-      background:
-        linear-gradient(0deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)),
-        var(--accent);
-      border-color: var(--line-firm);
-    }
-
-    .view .label {
+    .ev .k {
+      font-size: .6rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
       display: block;
-      font-size: 14px;
+      margin-bottom: .3rem
+    }
+
+    .ev .n {
+      font-size: 1.28rem;
+      line-height: 1.25;
+      color: var(--ink)
+    }
+
+    .ev .d {
+      font-size: .8rem;
+      color: var(--ink-mid);
+      margin-top: .15rem;
+      line-height: 1.5
+    }
+
+    .ev .s {
+      font-size: .71rem;
+      color: var(--ink-soft);
       font-style: italic;
-      color: var(--teal);
-      margin-bottom: 10px;
+      margin-top: .5rem;
+      display: block
     }
 
-    .view h3 {
-      margin: 0 0 9px;
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--ink);
+    .ev .s a {
+      border-bottom: 1px dotted var(--ink-soft);
+      transition: color .2s, border-color .2s
     }
 
-    .view p {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--muted);
+    .ev .s a:hover {
+      color: var(--ca);
+      border-color: var(--ca)
     }
 
-    /* ---------- map row ---------- */
 
-    .map-row {
-      display: grid;
-      grid-template-columns: 240px minmax(0, 1fr) 220px;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .map-row h2 {
-      margin: 0;
-      font-size: clamp(26px, 3.2vw, 34px);
-      line-height: 1.1;
-      font-weight: 400;
-      letter-spacing: -0.7px;
-    }
-
-    .map-row p {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 15px;
-      line-height: 1.75;
-      color: var(--muted);
-      max-width: 40em;
-    }
-
-    /* ---------- sources & note (collapsed) ---------- */
-
-    .text-link {
-      display: inline-block;
-      color: var(--teal);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-thickness: 1px;
-    }
-
+    /* Notes */
     .notes {
-      padding-top: 14px;
+      border-top: 1px solid var(--rule);
+      padding-top: .9rem;
+      margin-top: 1.6rem
     }
 
     .notes summary {
@@ -456,369 +567,521 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 9px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 13px;
-      color: var(--muted);
-      transition: color 0.2s ease;
+      gap: .55rem;
+      font-size: .8rem;
+      color: var(--ink-soft);
+      transition: color .2s
     }
 
     .notes summary::-webkit-details-marker {
-      display: none;
+      display: none
     }
 
     .notes summary:hover {
-      color: var(--ink);
+      color: var(--ink)
     }
 
     .notes summary i {
       width: 5px;
       height: 5px;
-      background: var(--muted);
+      background: var(--ink-soft);
       transform: rotate(45deg);
-      transition: transform 0.4s ease;
+      transition: transform .4s
     }
 
     .notes[open] summary i {
-      transform: rotate(225deg);
+      transform: rotate(225deg)
     }
 
     .notes .nbody {
-      margin-top: 12px;
-      max-width: 40em;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 14.5px;
-      line-height: 1.75;
-      color: var(--ink-soft);
+      margin-top: .7rem;
+      font-size: .83rem;
+      color: var(--ink-mid);
+      max-width: 46rem;
+      line-height: 1.7
     }
 
-    .notes .nbody .disclaimer {
+    .notes .nbody span {
       display: block;
-      margin-top: 10px;
-      font-size: 13px;
-      font-style: italic;
-      color: var(--muted);
+      margin-top: .45rem;
+      font-size: .76rem;
+      color: var(--ink-soft);
+      font-style: italic
     }
 
-    .notes .nbody .text-link {
-      display: inline-block;
-      margin-top: 14px;
-      font-size: 15px;
-    }
-
-    /* ---------- back home + footer ---------- */
-
+    /* 底部返回 */
     .backhome {
-      padding: clamp(36px, 5.5vh, 52px) 0 10px;
+      padding: clamp(2.2rem, 5.5vh, 3.2rem) 0 .6rem
     }
 
     .backhome a {
-      font-size: 16px;
-      color: var(--teal);
-      border-bottom: 1px solid var(--teal);
+      font-size: 1.02rem;
+      color: var(--sea);
+      border-bottom: 1px solid var(--sea);
       padding-bottom: 3px;
-      text-decoration: none;
-      transition: opacity 0.25s ease;
+      transition: opacity .25s
     }
 
     .backhome a:hover {
-      opacity: 0.6;
+      opacity: .6
     }
 
     footer {
-      border-top: 1px solid var(--line);
-      margin-top: 26px;
-      padding: 16px 0 28px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .footer-inner {
+      border-top: 1px solid var(--rule);
+      max-width: var(--maxw);
+      margin: 1.6rem auto 0;
+      padding: 1rem clamp(1.2rem, 5vw, 3rem) 2.4rem;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      gap: 24px;
+      flex-wrap: wrap;
+      gap: .5rem;
+      font-size: .71rem;
+      color: var(--ink-soft)
     }
 
-    /* ---------- responsive ---------- */
-
-    @media (max-width: 900px) {
-      .section-head {
-        grid-template-columns: 1fr;
-        gap: 18px;
-        align-items: start;
-      }
-
-      .map-row {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        align-items: start;
-      }
-
-      .views {
-        grid-template-columns: 1fr;
-      }
+    .rev {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .7s cubic-bezier(.22, 1, .36, 1)
     }
 
-    @media (max-width: 620px) {
-      .wrap {
-        width: calc(100% - 36px);
-      }
-
-      .hero {
-        padding: 38px 0 32px;
-      }
-
-      section {
-        padding: 46px 0;
-      }
-
-      .tab-button {
-        padding: 10px 10px 8px;
-        font-size: 13px;
-      }
-
-      .cta-block {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      * {
-        transition: none !important;
-      }
-
-      .cursor-ring {
-        display: none;
-      }
-
-      .view:hover {
-        transform: none;
-      }
+    .rev.in {
+      opacity: 1;
+      transform: none
     }
   </style>
 </head>
 
 <body>
-  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
-  <nav class="site-nav">
-    <div class="wrap nav-inner">
-      <span class="kicker">Independent data &amp; policy case study</span>
-      <a class="back-home" href="https://yuxizhou2177.github.io/">&larr; yuxizhou2177.github.io</a>
-    </div>
-  </nav>
+  <!-- ===== TOP BAR ===== -->
 
-  <header class="hero" id="top">
+  <div class="topbar">
     <div class="wrap">
-      <h1>SIDSight</h1>
+      <span class="kicker">Independent communication case study</span>
 
-      <p class="lede">
-        Agrifood and resilience indicators across 8 Small Island Developing States.
+      <a href="https://yuxizhou2177.github.io/">
+        ← yuxizhou2177.github.io
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+
+  <header class="hero">
+    <div class="wrap">
+
+      <h1>Across DDCN</h1>
+
+      <p class="sub">
+        From six portfolios to three messages
       </p>
 
-      <p class="question">
-        If you had 5 minutes before meeting a delegation in Geneva, what
-        information would you want at hand?
+      <p class="sub2">
+        A public-facing synthesis of FAO's Natural Resources and Sustainable Production
+        portfolio — spanning climate, forests, fisheries, animal health, food safety and applied science.
       </p>
 
-      <div class="pill-row">
-        <span class="pill tool">Power BI</span>
-        <span class="pill tool">Excel</span>
-        <span class="pill tool">Python</span>
-        <span class="pill tool">ArcGIS</span>
-      </div>
+      <hr class="hero-rule">
+
     </div>
   </header>
 
-  <main>
-    <section id="dashboard">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 class="section-title">Dashboard</h2>
+  <!-- ══════ 01 ══════ -->
+  <section id="map">
+    <div class="wrap">
+      <div class="sechead rev"><span class="num">01</span>
+        <h2>How the portfolios connect</h2>
+      </div>
 
-          <p class="section-copy">
-            3 views designed to move from comparison to context and action.
+      <div class="diagram rev">
+        <svg viewBox="0 0 920 440" role="img"
+          aria-label="Six FAO technical portfolios grouped into three public messages, with dashed lines marking secondary contributions, all converging on FAO's agrifood systems transformation frame and the Four Betters.">
+
+          <text x="59" y="20" text-anchor="middle" font-family="Constantia,Georgia,serif" font-size="9.5"
+            letter-spacing="2.2" fill="#7E8781">PORTFOLIOS</text>
+          <text x="450" y="20" text-anchor="middle" font-family="Constantia,Georgia,serif" font-size="9.5"
+            letter-spacing="2.2" fill="#7E8781">PUBLIC MESSAGES</text>
+
+
+          <g id="pills">
+            <g class="node" data-c="OCB">
+              <rect x="14" y="44" width="90" height="28" rx="14" fill="none" stroke="#1D5A61" /><text x="59" y="63"
+                text-anchor="middle" font-family="Constantia,Georgia,serif" font-size="13.5" fill="#1D5A61">OCB</text>
+            </g>
+            <g class="node" data-c="NFO">
+              <rect x="14" y="80" width="90" height="28" rx="14" fill="none" stroke="#1D5A61" /><text x="59" y="99"
+                text-anchor="middle" font-family="Constantia,Georgia,serif" font-size="13.5" fill="#1D5A61">NFO</text>
+            </g>
+            <g class="node" data-c="NFI">
+              <rect x="14" y="116" width="90" height="28" rx="14" fill="none" stroke="#1D5A61" /><text x="59" y="135"
+                text-anchor="middle" font-family="Constantia,Georgia,serif" font-size="13.5" fill="#1D5A61">NFI</text>
+            </g>
+            <g class="node" data-c="NSA">
+              <rect x="14" y="184" width="90" height="28" rx="14" fill="none" stroke="#B0532C" /><text x="59" y="203"
+                text-anchor="middle" font-family="Constantia,Georgia,serif" font-size="13.5" fill="#B0532C">NSA</text>
+            </g>
+            <g class="node" data-c="CJW">
+              <rect x="14" y="220" width="90" height="28" rx="14" fill="none" stroke="#B0532C" /><text x="59" y="239"
+                text-anchor="middle" font-family="Constantia,Georgia,serif" font-size="13.5" fill="#B0532C">CJW</text>
+            </g>
+            <g class="node" data-c="CJN">
+              <rect x="14" y="256" width="90" height="28" rx="14" fill="none" stroke="#B0532C" /><text x="59" y="275"
+                text-anchor="middle" font-family="Constantia,Georgia,serif" font-size="13.5" fill="#B0532C">CJN</text>
+            </g>
+            <g class="node" data-c="ALL">
+              <rect x="14" y="326" width="90" height="28" rx="14" fill="rgba(184,134,47,.07)" stroke="#B8862F"
+                stroke-dasharray="4 3" /><text x="59" y="345" text-anchor="middle"
+                font-family="Constantia,Georgia,serif" font-size="12" fill="#B8862F">ALL SIX</text>
+            </g>
+          </g>
+
+          <g fill="none" stroke-linecap="round">
+            <path class="link" data-c="OCB" d="M104,58 C170,58 184,66 238,72" stroke="#1D5A61" stroke-width="1.3"
+              stroke-opacity=".5" />
+            <path class="link" data-c="NFO" d="M104,94 C170,94 184,80 238,78" stroke="#1D5A61" stroke-width="1.3"
+              stroke-opacity=".5" />
+            <path class="link" data-c="NFI" d="M104,130 C170,130 184,96 238,84" stroke="#1D5A61" stroke-width="1.3"
+              stroke-opacity=".5" />
+            <path class="link" data-c="NSA" d="M104,198 C170,198 184,206 238,212" stroke="#B0532C" stroke-width="1.3"
+              stroke-opacity=".5" />
+            <path class="link" data-c="CJW" d="M104,234 C170,234 184,220 238,218" stroke="#B0532C" stroke-width="1.3"
+              stroke-opacity=".5" />
+            <path class="link" data-c="CJN" d="M104,270 C170,270 184,236 238,224" stroke="#B0532C" stroke-width="1.3"
+              stroke-opacity=".5" />
+            <!-- secondary：虚线＝次要连接，不改变主分组 -->
+            <path class="link secondary" data-c="NFI" d="M104,130 C162,150 182,186 238,206" stroke="#B0532C"
+              stroke-width="1.2" stroke-opacity=".32" stroke-dasharray="5 5" />
+            <path class="link secondary" data-c="CJN" d="M104,270 C162,250 182,136 238,102" stroke="#1D5A61"
+              stroke-width="1.2" stroke-opacity=".32" stroke-dasharray="5 5" />
+            <path class="link secondary" data-c="ALL" d="M104,340 C170,340 184,348 238,354" stroke="#B8862F"
+              stroke-width="1.2" stroke-opacity=".35" stroke-dasharray="5 5" />
+          </g>
+
+          <!-- 图例 -->
+          <g font-family="Constantia,Georgia,serif" font-size="8.6" fill="#7E8781">
+            <path d="M14,388 L44,388" stroke="#7E8781" stroke-width="1.2" stroke-opacity=".55" fill="none" />
+            <text x="50" y="391">primary grouping</text>
+            <path d="M14,408 L44,408" stroke="#7E8781" stroke-width="1.1" stroke-opacity=".4" stroke-dasharray="5 5"
+              fill="none" />
+            <text x="50" y="411">also contributes</text>
+          </g>
+
+          <g class="node" data-frame="m1">
+            <rect x="240" y="36" width="420" height="86" rx="11" fill="rgba(29,90,97,.06)" stroke="#1D5A61"
+              stroke-width="1.1" />
+            <text x="262" y="62" font-family="Constantia,Georgia,serif" font-size="10" letter-spacing="1.8"
+              fill="#1D5A61">01</text>
+            <text x="262" y="88" font-family="Constantia,Georgia,serif" font-size="17" fill="#1D5A61">PROTECT
+              RESOURCES</text>
+            <text x="262" y="108" font-family="Constantia,Georgia,serif" font-size="11.5" fill="#49534F">forests · land
+              &amp; biodiversity · aquatic systems</text>
+          </g>
+          <g class="node" data-frame="m2">
+            <rect x="240" y="176" width="420" height="86" rx="11" fill="rgba(176,83,44,.06)" stroke="#B0532C"
+              stroke-width="1.1" />
+            <text x="262" y="202" font-family="Constantia,Georgia,serif" font-size="10" letter-spacing="1.8"
+              fill="#B0532C">02</text>
+            <text x="262" y="228" font-family="Constantia,Georgia,serif" font-size="17" fill="#B0532C">MANAGE
+              RISKS</text>
+            <text x="262" y="248" font-family="Constantia,Georgia,serif" font-size="11.5" fill="#49534F">people ·
+              animals · plants &amp; food · environment</text>
+          </g>
+          <g class="node" data-frame="m3">
+            <rect x="240" y="316" width="420" height="86" rx="11" fill="rgba(184,134,47,.06)" stroke="#B8862F"
+              stroke-width="1.1" />
+            <text x="262" y="342" font-family="Constantia,Georgia,serif" font-size="10" letter-spacing="1.8"
+              fill="#B8862F">03</text>
+            <text x="262" y="368" font-family="Constantia,Georgia,serif" font-size="17" fill="#B8862F">PUT KNOWLEDGE TO
+              WORK</text>
+            <text x="262" y="388" font-family="Constantia,Georgia,serif" font-size="11.5" fill="#49534F">science &amp;
+              data · standards · partnerships · investment</text>
+          </g>
+
+          <!-- 三条 message 汇聚成一条，进入 strategic frame -->
+          <g fill="none" stroke="#7E8781" stroke-width="1" stroke-opacity=".45" stroke-linecap="round">
+            <path d="M660,79 L676,79" />
+            <path d="M660,219 L676,219" />
+            <path d="M660,359 L676,359" />
+            <path d="M676,79 L676,359" />
+            <path d="M676,219 L690,219" />
+          </g>
+          <circle cx="676" cy="219" r="2.6" fill="#7E8781" fill-opacity=".7" />
+
+          <!-- 右：FAO strategic frame（终点卡）-->
+          <rect x="690" y="96" width="216" height="248" rx="12" fill="rgba(184,134,47,.06)" stroke="#E4DBC6"
+            stroke-width="1" />
+          <g font-family="Constantia,Georgia,serif" text-anchor="middle">
+            <text x="798" y="130" font-size="9" letter-spacing="2.2" fill="#B8862F">FAO STRATEGIC FRAME</text>
+            <text x="798" y="166" font-size="14.5" letter-spacing="1" fill="#16191B">AGRIFOOD SYSTEMS</text>
+            <text x="798" y="185" font-size="14.5" letter-spacing="1" fill="#16191B">TRANSFORMATION</text>
+            <text x="798" y="209" font-size="10" fill="#7E8781">more efficient · inclusive</text>
+            <text x="798" y="223" font-size="10" fill="#7E8781">resilient · sustainable</text>
+            <path d="M798,238 L798,250" stroke="#B8862F" stroke-width="1" stroke-opacity=".5" fill="none" />
+            <path d="M794,246 L798,251 L802,246" stroke="#B8862F" stroke-width="1" stroke-opacity=".5" fill="none" />
+            <text x="750" y="280" font-size="8.2" letter-spacing=".4" fill="#B8862F">BETTER PRODUCTION</text>
+            <text x="850" y="280" font-size="8.2" letter-spacing=".4" fill="#B8862F">BETTER NUTRITION</text>
+            <text x="750" y="304" font-size="8.2" letter-spacing=".4" fill="#B8862F">BETTER ENVIRONMENT</text>
+            <text x="850" y="304" font-size="8.2" letter-spacing=".4" fill="#B8862F">BETTER LIFE</text>
+          </g>
+        </svg>
+
+        <div class="stacked">
+          <div class="stk b1">
+            <h4>01 · Protect resources</h4>
+            <div class="codes">OCB · NFO · NFI</div>
+          </div>
+          <div class="stk b2">
+            <h4>02 · Manage risks</h4>
+            <div class="codes">NSA · CJW · CJN</div>
+          </div>
+          <div class="stk b3">
+            <h4>03 · Put knowledge to work</h4>
+            <div class="codes">all six portfolios</div>
+          </div>
+          <div class="stk">
+            <h4>FAO strategic context</h4>
+            <div class="codes">Agrifood systems transformation — more efficient, inclusive, resilient, sustainable ·
+              Better Production · Better Nutrition · Better Environment · Better Life</div>
+          </div>
+        </div>
+
+        <div class="capline">
+          <div class="pillrow">
+            <button class="pcode" data-c="OCB">OCB</button><button class="pcode" data-c="NFO">NFO</button>
+            <button class="pcode" data-c="NFI">NFI</button><button class="pcode" data-c="NSA">NSA</button>
+            <button class="pcode" data-c="CJW">CJW</button><button class="pcode" data-c="CJN">CJN</button>
+          </div>
+          <span class="diaghint" id="cap" data-default="Hover a portfolio to trace its main grouping.">Hover a portfolio
+            to trace its main grouping.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="orn s" aria-hidden="true"><i></i></div>
+
+  <!-- ══════ 02 ══════ -->
+  <section id="messages">
+    <div class="wrap">
+      <div class="sechead rev"><span class="num">02</span>
+        <h2>Three public messages</h2>
+      </div>
+
+      <div class="cards">
+
+        <!-- 01 -->
+        <article class="mcard m1 rev">
+          <h3>Protect resources</h3>
+          <div class="mviz">
+            <svg viewBox="0 0 300 150"
+              aria-label="Forests, land and biodiversity, and aquatic systems connected to a shared resource base.">
+              <g stroke="#1D5A61" stroke-width="1" stroke-opacity=".3" fill="none">
+                <path d="M150,49 L150,34" />
+                <path d="M126,85 L98,109" />
+                <path d="M174,85 L202,109" />
+              </g>
+              <circle cx="150" cy="75" r="26" fill="rgba(29,90,97,.07)" stroke="none" />
+              <ellipse cx="150" cy="17" rx="46" ry="17" fill="rgba(29,90,97,.07)" stroke="#1D5A61" stroke-width="1" />
+              <ellipse cx="56" cy="116" rx="46" ry="17" fill="rgba(29,90,97,.07)" stroke="#1D5A61" stroke-width="1" />
+              <ellipse cx="244" cy="116" rx="46" ry="17" fill="rgba(29,90,97,.07)" stroke="#1D5A61" stroke-width="1" />
+              <g font-family="Constantia,Georgia,serif" fill="#1D5A61" text-anchor="middle">
+                <text x="150" y="20.5" font-size="9.4">FORESTS</text>
+                <text x="56" y="114" font-size="8.6">LAND &amp;</text>
+                <text x="56" y="125" font-size="8.6">BIODIVERSITY</text>
+                <text x="244" y="114" font-size="8.6">AQUATIC</text>
+                <text x="244" y="125" font-size="8.6">SYSTEMS</text>
+                <text x="150" y="72" font-size="8.4" letter-spacing="1.4" fill="#7E8781">RESOURCE</text>
+                <text x="150" y="84" font-size="8.4" letter-spacing="1.4" fill="#7E8781">BASE</text>
+              </g>
+            </svg>
+          </div>
+          <p class="one">Resilient agrifood systems depend on healthy forests, land and aquatic ecosystems.</p>
+          <p class="ctx"><b>FAO context:</b> Blue Transformation · Biodiversity &amp; ecosystem services</p>
+          <div class="ev">
+            <span class="k">Key figure</span>
+            <div class="n">10.9 million hectares a year</div>
+            <div class="d">Global deforestation, 2015–25</div>
+            <span class="s"><a href="https://www.fao.org/interactive/2025/forest-resources-assessment/en/"
+                target="_blank" rel="noopener">FAO · FRA 2025 ↗</a></span>
+          </div>
+        </article>
+
+        <!-- 02 -->
+        <article class="mcard m2 rev">
+          <h3>Manage risks</h3>
+          <div class="mviz">
+            <svg viewBox="0 0 300 150"
+              aria-label="People, animals, plants and food, and the environment connected through One Health.">
+              <g stroke="#B0532C" stroke-width="1" stroke-opacity=".3" fill="none">
+                <path d="M150,49 L150,34" />
+                <path d="M124,75 L96,75" />
+                <path d="M176,75 L204,75" />
+                <path d="M150,101 L150,116" />
+              </g>
+              <circle cx="150" cy="75" r="26" fill="rgba(176,83,44,.08)" stroke="none" />
+              <ellipse cx="150" cy="17" rx="46" ry="17" fill="rgba(176,83,44,.07)" stroke="#B0532C" stroke-width="1" />
+              <ellipse cx="50" cy="75" rx="46" ry="17" fill="rgba(176,83,44,.07)" stroke="#B0532C" stroke-width="1" />
+              <ellipse cx="250" cy="75" rx="46" ry="17" fill="rgba(176,83,44,.07)" stroke="#B0532C" stroke-width="1" />
+              <ellipse cx="150" cy="133" rx="46" ry="17" fill="rgba(176,83,44,.07)" stroke="#B0532C" stroke-width="1" />
+              <g font-family="Constantia,Georgia,serif" fill="#B0532C" text-anchor="middle">
+                <text x="150" y="20.5" font-size="9.4">ANIMALS</text>
+                <text x="50" y="78.5" font-size="9.4">ENVIRONMENT</text>
+                <text x="250" y="78.5" font-size="9.4">PEOPLE</text>
+                <text x="150" y="136.5" font-size="9.4">PLANTS &amp; FOOD</text>
+                <text x="150" y="72" font-size="8.4" letter-spacing="1.4" fill="#7E8781">ONE</text>
+                <text x="150" y="84" font-size="8.4" letter-spacing="1.4" fill="#7E8781">HEALTH</text>
+              </g>
+            </svg>
+          </div>
+          <p class="one">Animal, food and environmental risks rarely stay within one sector or one border.</p>
+          <p class="ctx"><b>FAO context:</b> One Health · Safe food for everyone</p>
+          <div class="ev">
+            <span class="k">Key figure</span>
+            <div class="n">About 60%</div>
+            <div class="d">of known human infectious diseases are zoonotic</div>
+            <span class="s"><a
+                href="https://www.fao.org/americas/news/news-detail/declaracion-conjunta-una-sola-salud/en"
+                target="_blank" rel="noopener">FAO · One Health ↗</a></span>
+          </div>
+        </article>
+
+        <!-- 03 -->
+        <article class="mcard m3 rev">
+          <h3>Put knowledge to work</h3>
+          <div class="mviz">
+            <svg viewBox="0 0 300 150"
+              aria-label="Science and data, standards, partnerships and investment connected to country use.">
+              <g stroke="#B8862F" stroke-width="1" stroke-opacity=".3" fill="none">
+                <path d="M150,49 L150,34" />
+                <path d="M124,75 L96,75" />
+                <path d="M176,75 L204,75" />
+                <path d="M150,101 L150,116" />
+              </g>
+              <circle cx="150" cy="75" r="26" fill="rgba(184,134,47,.1)" stroke="none" />
+              <ellipse cx="150" cy="17" rx="46" ry="17" fill="rgba(184,134,47,.07)" stroke="#B8862F" stroke-width="1" />
+              <ellipse cx="50" cy="75" rx="46" ry="17" fill="rgba(184,134,47,.07)" stroke="#B8862F" stroke-width="1" />
+              <ellipse cx="250" cy="75" rx="46" ry="17" fill="rgba(184,134,47,.07)" stroke="#B8862F" stroke-width="1" />
+              <ellipse cx="150" cy="133" rx="46" ry="17" fill="rgba(184,134,47,.07)" stroke="#B8862F"
+                stroke-width="1" />
+              <g font-family="Constantia,Georgia,serif" fill="#B8862F" text-anchor="middle">
+                <text x="150" y="20.5" font-size="9.4">SCIENCE &amp; DATA</text>
+                <text x="50" y="78.5" font-size="9.4">STANDARDS</text>
+                <text x="250" y="78.5" font-size="9.4">PARTNERSHIPS</text>
+                <text x="150" y="136.5" font-size="9.4">INVESTMENT</text>
+                <text x="150" y="72" font-size="8.4" letter-spacing="1.4" fill="#7E8781">COUNTRY</text>
+                <text x="150" y="84" font-size="8.4" letter-spacing="1.4" fill="#7E8781">USE</text>
+              </g>
+            </svg>
+          </div>
+          <p class="one">Technical knowledge matters when countries can use it in policy, investment and implementation.
           </p>
-
-          <a class="cta-block"
-            href="https://app.powerbi.com/reportEmbed?reportId=8e9c00ea-cedc-4348-afb7-193ad34a40b2&amp;autoAuth=true&amp;ctid=1d4fae52-39b3-4bfa-b0b3-022956b11194&amp;actionBarEnabled=true&amp;reportCopilotInEmbed=true"
-            target="_blank" rel="noopener noreferrer">
-            Open the live report<span class="arrow">&rarr;</span>
-          </a>
-        </div>
-
-        <div class="dashboard-panel">
-          <div class="dashboard-toolbar" role="tablist" aria-label="Dashboard views">
-            <button class="tab-button active" type="button" role="tab" aria-selected="true" data-view="0">SIDS
-              Overview</button>
-            <button class="tab-button" type="button" role="tab" aria-selected="false" data-view="1">Country
-              Brief</button>
-            <button class="tab-button" type="button" role="tab" aria-selected="false" data-view="2">FAO
-              Connections</button>
+          <p class="ctx"><b>FAO context:</b> Hand-in-Hand · Data &amp; innovation</p>
+          <div class="ev">
+            <span class="k">Key figure</span>
+            <div class="n">US$15.9 billion</div>
+            <div class="d">Investment opportunities presented in 2025, across 31 countries and 6 regional initiatives
+            </div>
+            <span class="s"><a
+                href="https://www.fao.org/newsroom/detail/wff-2025--hand-in-hand-investment-forum-pitches--15.9-billion-in-agrifood-opportunities/en"
+                target="_blank" rel="noopener">Hand-in-Hand · 2025 ↗</a></span>
           </div>
+        </article>
 
-          <div class="preview-frame">
-            <img id="dashboard-preview" src="dashboard/sids-overview.png" alt="SIDS Overview dashboard preview" />
-          </div>
+      </div>
+
+      <details class="notes rev">
+        <summary><i></i>Sources &amp; note</summary>
+        <div class="nbody">
+          Built from public FAO material. The three messages are a communication synthesis rather than a
+          description of FAO reporting lines. Solid lines show the primary grouping; dashed lines mark
+          secondary connections. Figures link to the source cited.
+          <span>Independent portfolio exercise. Not an FAO product.</span>
         </div>
-
-        <div class="views">
-          <button class="view active" type="button" data-view="0" data-image="dashboard/sids-overview.png"
-            data-title="SIDS Overview">
-            <span class="label">Evidence</span>
-            <h3>SIDS Overview</h3>
-            <p>
-              Four indicators across eight countries, making cross-country
-              differences easier to spot than in a conventional table.
-            </p>
-          </button>
-
-          <button class="view" type="button" data-view="1" data-image="dashboard/country-brief.png"
-            data-title="Country Brief">
-            <span class="label">Context</span>
-            <h3>Country Brief</h3>
-            <p>
-              One country at a time: key indicators paired with geographic and
-              policy context, and a question worth exploring.
-            </p>
-          </button>
-
-          <button class="view" type="button" data-view="2" data-image="dashboard/fao-connections.png"
-            data-title="FAO Connections">
-            <span class="label">Connections</span>
-            <h3>FAO Connections</h3>
-            <p>
-              Where country challenges connect with existing initiatives and
-              investments &mdash; dialogues, regional portfolios, ongoing projects.
-            </p>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section id="map">
-      <div class="wrap map-row">
-        <h2>The map</h2>
-
-        <p>
-          A companion ArcGIS map showing all 8 countries, with each one's
-          indicators in the popup. The geography alone tells an interesting story:
-          the Pacific states are scattered across an ocean, while the Caribbean
-          SIDS lie much closer together.
-        </p>
-
-        <a class="cta-block" href="https://arcg.is/1afyyD3" target="_blank" rel="noopener noreferrer">
-          Open the map<span class="arrow">&rarr;</span>
-        </a>
-      </div>
-    </section>
-
-    <section id="methods">
-      <div class="wrap">
-        <details class="notes">
-          <summary><i></i>Sources &amp; note</summary>
-          <div class="nbody">
-            Indicators from World Bank, ND-GAIN and FAO. Missing values remain visible
-            rather than estimated, and years are shown as reported.
-            <a class="text-link" href="https://github.com/yuxizhou2177/SIDSight/blob/main/methodology/methodology.md">
-              Full methodology and sources<span class="arrow">&rarr;</span>
-            </a>
-          </div>
-        </details>
-      </div>
-    </section>
-  </main>
+      </details>
+    </div>
+  </section>
 
   <div class="backhome">
     <div class="wrap">
-      <a href="https://yuxizhou2177.github.io/">Back to yuxizhou2177.github.io<span class="arrow">&rarr;</span></a>
+      <a href="https://yuxizhou2177.github.io">Back to yuxizhou2177.github.io →</a>
     </div>
   </div>
 
   <footer>
-    <div class="wrap footer-inner">
-      <span>SIDSight &mdash; an independent data &amp; policy case study</span>
-      <span>Yuxi Zhou &middot; 2026</span>
-    </div>
+    <span>Across DDCN — a communication synthesis exercise</span>
+    <span>Yuxi Zhou · 2026</span>
   </footer>
 
+  <div class="cur cur-frame" id="curFrame" aria-hidden="true"></div>
+  <div class="cur cur-core" id="curCore" aria-hidden="true"></div>
+
   <script>
-    /* ---- tabs and cards both drive the same preview ---- */
-    const tabs = Array.from(document.querySelectorAll(".tab-button"));
-    const cards = Array.from(document.querySelectorAll(".view"));
-    const preview = document.getElementById("dashboard-preview");
-    let current = 0;
+    const io = new IntersectionObserver(es => es.forEach(e => {if (e.isIntersecting) e.target.classList.add('in')}),
+      {threshold: .1, rootMargin: '0px 0px -40px 0px'});
+    document.querySelectorAll('.rev').forEach((el, i) => {el.style.transitionDelay = (Math.min(i, 5) * .06) + 's'; io.observe(el)});
+    addEventListener('scroll', () => document.getElementById('nav').classList.toggle('edge', scrollY > 40), {passive: true});
 
-    function select(index) {
-      if (index === current) return;
-      current = index;
-
-      const card = cards[index];
-
-      tabs.forEach((tab, i) => {
-        tab.classList.toggle("active", i === index);
-        tab.setAttribute("aria-selected", i === index ? "true" : "false");
-      });
-
-      cards.forEach((c, i) => c.classList.toggle("active", i === index));
-
-      preview.classList.add("is-changing");
-      setTimeout(() => {
-        preview.src = card.dataset.image;
-        preview.alt = card.dataset.title + " dashboard preview";
-        preview.classList.remove("is-changing");
-      }, 160);
+    const NAMES = {
+      OCB: ['Office of Climate Change, Biodiversity and Environment', 'g-sea'],
+      NFO: ['Forestry Division', 'g-sea'],
+      NFI: ['Fisheries and Aquaculture Division', 'g-sea', 'also connects to risks — aquatic biosecurity and One Health'],
+      NSA: ['Animal Production and Health Division', 'g-clay'],
+      CJW: ['Joint FAO/WHO Centre — Codex Alimentarius and food safety', 'g-clay'],
+      CJN: ['Joint FAO/IAEA Centre — nuclear techniques in food and agriculture', 'g-clay', 'also connects to resources — soil, water and plant breeding'],
+      ALL: ['All six portfolios contribute', 'g-och']
+    };
+    const cap = document.getElementById('cap');
+    function caption(code) {
+      if (!cap) return;
+      cap.classList.remove('g-sea', 'g-clay', 'g-och', 'on');
+      if (code && NAMES[code]) {
+        const extra = NAMES[code][2] ? ' <i>' + NAMES[code][2] + '</i>' : '';
+        cap.innerHTML = '<b>' + code + '</b> · ' + NAMES[code][0] + extra;
+        cap.classList.add('on', NAMES[code][1]);
+      } else {
+        cap.textContent = cap.dataset.default;
+      }
     }
-
-    tabs.forEach((tab) =>
-      tab.addEventListener("click", () => select(Number(tab.dataset.view)))
-    );
-
-    cards.forEach((card) =>
-      card.addEventListener("click", () => select(Number(card.dataset.view)))
-    );
-
-    /* ---- cursor follower ---- */
-    const ring = document.getElementById("cursor-ring");
-    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    const stillOK = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (ring && fine && stillOK) {
-      let targetX = 0, targetY = 0, ringX = 0, ringY = 0, started = false;
-
-      document.addEventListener("mousemove", (e) => {
-        targetX = e.clientX;
-        targetY = e.clientY;
-        if (!started) {
-          ringX = targetX;
-          ringY = targetY;
-          ring.classList.add("is-visible");
-          started = true;
-        }
+    const links = [...document.querySelectorAll('.link')], nodes = [...document.querySelectorAll('.node')];
+    /* 每个 portfolio 连到哪些 message —— NFI 与 CJN 各有两个 */
+    const GOES = {OCB: ['m1'], NFO: ['m1'], NFI: ['m1', 'm2'], NSA: ['m2'], CJW: ['m2'], CJN: ['m2', 'm1'], ALL: ['m3']};
+    function lite(code) {
+      links.forEach(l => {l.classList.toggle('lit', l.dataset.c === code); l.classList.toggle('dim', !!code && l.dataset.c !== code)});
+      const to = code ? (GOES[code] || []) : null;
+      nodes.forEach(n => {
+        const keep = !code
+          ? true
+          : (n.dataset.c === code) || (n.dataset.frame && to.includes(n.dataset.frame));
+        n.classList.toggle('dim', !keep);
       });
+    }
+    document.querySelectorAll('.pcode').forEach(b => {
+      b.addEventListener('mouseenter', () => {lite(b.dataset.c); caption(b.dataset.c)});
+      b.addEventListener('mouseleave', () => {lite(null); caption(null)});
+      b.addEventListener('focus', () => {lite(b.dataset.c); caption(b.dataset.c)});
+      b.addEventListener('blur', () => {lite(null); caption(null)});
+      b.addEventListener('click', () => {lite(b.dataset.c); caption(b.dataset.c)});
+    });
+    document.querySelectorAll('#pills .node').forEach(n => {
+      n.addEventListener('mouseenter', () => {lite(n.dataset.c); caption(n.dataset.c)});
+      n.addEventListener('mouseleave', () => {lite(null); caption(null)});
+    });
 
-      document.addEventListener("mouseleave", () => ring.classList.remove("is-visible"));
-      document.addEventListener("mouseenter", () => {
-        if (started) ring.classList.add("is-visible");
-      });
 
-      document.querySelectorAll("a, button").forEach((el) => {
-        el.addEventListener("mouseenter", () => ring.classList.add("is-active"));
-        el.addEventListener("mouseleave", () => ring.classList.remove("is-active"));
-      });
-
+    if (matchMedia('(pointer:fine)').matches) {
+      const ring = document.getElementById('curFrame'), dot = document.getElementById('curCore');
+      let mx = -100, my = -100, tx = -100, ty = -100, ang = 45;
+      addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        dot.style.transform = `translate(${mx - dot.offsetWidth / 2}px,${my - dot.offsetHeight / 2}px) rotate(45deg)`;
+        const hot = !!e.target.closest('a,button,.mcard,summary');
+        ring.classList.toggle('grow', hot); dot.classList.toggle('grow', hot);
+      }, {passive: true});
       (function loop() {
-        ringX += (targetX - ringX) * 0.16;
-        ringY += (targetY - ringY) * 0.16;
-        ring.style.transform = "translate(" + ringX + "px, " + ringY + "px)";
-        requestAnimationFrame(loop);
+        tx += (mx - tx) * .16; ty += (my - ty) * .16; ang += .08;
+        ring.style.transform = `translate(${tx - ring.offsetWidth / 2}px,${ty - ring.offsetHeight / 2}px) rotate(${ang}deg)`;
+        requestAnimationFrame(loop)
       })();
     }
   </script>
