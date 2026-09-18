@@ -93,40 +93,80 @@
       transform: translateX(3px);
     }
 
-    /* ---------- cursor follower ---------- */
+    /* ---------- shared custom cursor ---------- */
 
-    .cursor-ring {
+    @media (pointer: fine) {
+
+      body,
+      a,
+      button,
+      summary {
+        cursor: none;
+      }
+    }
+
+    .cur {
       position: fixed;
       top: 0;
       left: 0;
-      width: 26px;
-      height: 26px;
-      margin: -13px 0 0 -13px;
-      border: 1px solid var(--line-firm);
-      border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
-      opacity: 0;
-      transition: opacity 0.25s ease, width 0.2s ease, height 0.2s ease,
-        margin 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     }
 
-    .cursor-ring.is-visible {
-      opacity: 1;
+    .cur-core {
+      width: 5px;
+      height: 5px;
+      background: var(--ink);
+      opacity: .72;
+      transition: background .3s;
     }
 
-    .cursor-ring.is-active {
-      width: 42px;
-      height: 42px;
-      margin: -21px 0 0 -21px;
-      border-color: var(--gold);
-      background: var(--gold-wash);
+    .cur-frame {
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--ink);
+      animation: cursor-glim 3.4s ease-in-out infinite;
+
+      transition:
+        width .35s cubic-bezier(.22, 1, .36, 1),
+        height .35s cubic-bezier(.22, 1, .36, 1),
+        border-color .3s;
     }
 
-    @media (hover: none),
-    (pointer: coarse) {
-      .cursor-ring {
+    @keyframes cursor-glim {
+
+      0%,
+      100% {
+        opacity: .14;
+      }
+
+      50% {
+        opacity: .4;
+      }
+    }
+
+    .cur-frame.grow {
+      animation: none;
+      opacity: .6;
+      width: 40px;
+      height: 40px;
+      border-color: #B0532C;
+    }
+
+    .cur-core.grow {
+      background: #B0532C;
+    }
+
+    @media (max-width: 900px) {
+      .cur {
         display: none;
+      }
+
+      body,
+      a,
+      button,
+      summary {
+        cursor: auto;
       }
     }
 
@@ -939,7 +979,8 @@
 </head>
 
 <body>
-  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+  <div class="cur cur-frame" id="curFrame" aria-hidden="true"></div>
+  <div class="cur cur-core" id="curCore" aria-hidden="true"></div>
 
   <nav class="site-nav">
     <div class="wrap nav-inner">
@@ -1159,42 +1200,51 @@
       card.addEventListener("click", () => select(Number(card.dataset.view)))
     );
 
-    /* ---- cursor follower ---- */
-    const ring = document.getElementById("cursor-ring");
-    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    const stillOK = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    /* ---------- shared custom cursor ---------- */
 
-    if (ring && fine && stillOK) {
-      let targetX = 0, targetY = 0, ringX = 0, ringY = 0, started = false;
+    if (matchMedia('(pointer:fine)').matches) {
 
-      document.addEventListener("mousemove", (e) => {
-        targetX = e.clientX;
-        targetY = e.clientY;
-        if (!started) {
-          ringX = targetX;
-          ringY = targetY;
-          ring.classList.add("is-visible");
-          started = true;
-        }
-      });
+      const ring = document.getElementById('curFrame');
+      const dot = document.getElementById('curCore');
 
-      document.addEventListener("mouseleave", () => ring.classList.remove("is-visible"));
-      document.addEventListener("mouseenter", () => {
-        if (started) ring.classList.add("is-visible");
-      });
+      let mx = -100;
+      let my = -100;
+      let tx = -100;
+      let ty = -100;
+      let ang = 45;
 
-      document.querySelectorAll("a, button").forEach((el) => {
-        el.addEventListener("mouseenter", () => ring.classList.add("is-active"));
-        el.addEventListener("mouseleave", () => ring.classList.remove("is-active"));
-      });
+      addEventListener('mousemove', e => {
 
-      (function loop() {
-        ringX += (targetX - ringX) * 0.16;
-        ringY += (targetY - ringY) * 0.16;
-        ring.style.transform = "translate(" + ringX + "px, " + ringY + "px)";
-        requestAnimationFrame(loop);
+        mx = e.clientX;
+        my = e.clientY;
+
+        dot.style.transform =
+          `translate(${mx - dot.offsetWidth / 2}px, ${my - dot.offsetHeight / 2}px) rotate(45deg)`;
+
+        const hot = !!e.target.closest(
+          'a, button, .view, .dashboard-panel, summary'
+        );
+
+        ring.classList.toggle('grow', hot);
+        dot.classList.toggle('grow', hot);
+
+      }, {passive: true});
+
+
+      (function cursorLoop() {
+
+        tx += (mx - tx) * .16;
+        ty += (my - ty) * .16;
+        ang += .08;
+
+        ring.style.transform =
+          `translate(${tx - ring.offsetWidth / 2}px, ${ty - ring.offsetHeight / 2}px) rotate(${ang}deg)`;
+
+        requestAnimationFrame(cursorLoop);
+
       })();
     }
+
     /* ---------- hero number count-up ---------- */
 
     const signalRow = document.querySelector(".signal-row");
