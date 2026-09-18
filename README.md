@@ -1,7 +1,7 @@
 # SIDSight
-**Agrifood Policy Explorer for Small Island Developing States**
+**Agrifood Evidence & Communication Explorer for SIDS**
 
-SIDSight is a small exploratory project looking at **how public data and policy information can support preparation for SIDS-focused discussions**.
+SIDSight is an independent exploratory project looking at **how data and clear communication can support preparation for SIDS-focused discussions**. It brings together selected agrifood, climate, resource and connectivity indicators and translates them into concise visual and country-level views designed for **briefing, communication and policy dialogue**.
 
 ![SIDSight Overview](dashboard/sids-overview.png)
 ## Explore the project
@@ -10,22 +10,26 @@ SIDSight is a small exploratory project looking at **how public data and policy 
 - **Country Brief** — country-level context for policy discussions
 - **FAO Connections** — links between selected country issues and FAO's SIDS-related work
 
-The first version covers 8 Small Island Developing States across the Pacific, Caribbean, and Atlantic, Indian Ocean and South China Sea (AIS) regions.
+The first version covers 8 Small Island Developing States (SIDS) across the Pacific, Caribbean, and Atlantic, Indian Ocean and South China Sea (AIS) regions.
 
 ![Tools](https://img.shields.io/badge/built_with-Python_%7C_Power_BI_%7C_ArcGIS-blue)
 ![Focus](https://img.shields.io/badge/focus-SIDS_agrifood_systems-2E8B57)
 
 ## Why I built this
 
-At UNESCO, most of my job is the monitoring side of an international convention — reviewing country reports, identifying gaps, preparing for bilateral and regional discussions, and following up with governments, particularly where implementation support is needed. A large number of those countries are SIDS. 
+In my current work at UNESCO, I support the monitoring of an international convention, including reviewing country reports, preparing briefing and communication materials, and following up with governments and Permanent Missions. A number of the countries I work with are SIDS.
 
-This experience made me interested in how a similar country-focused workflow could be applied in a different policy area. SIDSight is my attempt to take **a small set of public agrifood and development data**, turn it into a **concise country picture**, and then **connect what the data show with issues and programmes FAO is already working on**.
+That experience made me interested in a broader question: **how can country-level evidence be turned into information that is clear and quick to navigate before a meeting?**
+
+SIDSight is my attempt to explore that question in an agrifood context. I brought together a small set of public indicators, organized them into concise views, and experimented with different ways of communicating the evidence through dashboards, maps and short contextual explanations.
+
+The project is therefore as much about **communication and information design** as it is about data: deciding what to show, what context is needed, how much detail an audience can absorb, and how technical evidence can be made more useful for non-specialist discussion.
 
 ## The 3 questions it tries to answer
 
-1. **Cross-country view** — What do selected indicators tell us about **different SIDS agrifood contexts**?
-2. **Country brief** — What information would be useful when preparing for **a country-level policy discussion**?
-3. **FAO link** — How do these issues connect with **FAO's existing SIDS dialogues, programmes and areas of work**? 
+1. **What should an audience notice first?**  
+2. **What context does a country brief need?**  
+3. **How can evidence connect to FAO's existing initiatives and further action?**  
 
 ## The 8 countries
 
