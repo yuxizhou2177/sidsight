@@ -12,25 +12,30 @@
 
   <style>
     :root {
-      --ink: #2f2a24;
-      --ink-soft: #4a443c;
-      --muted: #746c61;
-      --paper: #fbf9f4;
-      --paper-2: #fffdf9;
-      --line: #e8ded0;
-      --line-firm: #d8ccb8;
+      --navy: #1C2B3A;
 
-      --gold: #b8862f;
+      --ink: #33363C;
+      --ink-soft: #4A4F55;
+      --muted: #6B6E75;
+
+      --paper: #F6F3EC;
+      --card: #FBF9F4;
+      --paper-2: #FBF9F4;
+
+      --line: #E8DED0;
+      --line-firm: #D8CCB8;
+
+      --gold: #B8862F;
       --gold-soft: rgba(184, 134, 47, 0.42);
       --gold-wash: rgba(184, 134, 47, 0.07);
 
-      --teal: #2f5259;
-      --teal-deep: #24444a;
-      --teal-wash: rgba(47, 82, 89, 0.06);
+      --teal: #1D5A61;
+      --teal-deep: #24444A;
+      --teal-wash: rgba(29, 90, 97, 0.06);
 
-      --c-evidence: #b8c9cd;
-      --c-context: #cbd493;
-      --c-connections: #e2cfca;
+      --c-evidence: #B8C9CD;
+      --c-context: #CBD493;
+      --c-connections: #E2CFCA;
 
       --radius: 4px;
     }
@@ -398,6 +403,10 @@
       border-bottom: none;
     }
 
+    #map {
+      border-bottom: none;
+    }
+
     .section-head {
       display: grid;
       grid-template-columns: 240px minmax(0, 1fr) 220px;
@@ -628,22 +637,42 @@
 
       display: flex;
       align-items: center;
-
       gap: .55rem;
 
       font-family:
-        Constantia,
-        "Palatino Linotype",
-        Palatino,
-        "Book Antiqua",
-        Georgia,
-        serif;
+        Calibri,
+        "Segoe UI",
+        -apple-system,
+        BlinkMacSystemFont,
+        Helvetica,
+        Arial,
+        sans-serif;
 
-      font-size: 13.6px;
+      font-size: 13px;
+      line-height: 1.55;
 
-      color: #7E8781;
+      color: var(--muted);
 
       transition: color .2s ease;
+    }
+
+    .notes .nbody {
+      margin-top: 10px;
+      max-width: 72ch;
+
+      font-family:
+        Calibri,
+        "Segoe UI",
+        -apple-system,
+        BlinkMacSystemFont,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      font-size: 13.5px;
+      line-height: 1.55;
+
+      color: var(--ink);
     }
 
     .notes summary::-webkit-details-marker {
@@ -690,43 +719,83 @@
 
     .notes .nbody .text-link {
       display: inline-block;
-      margin-top: 14px;
-      font-size: 15px;
+      margin-top: 10px;
+
+      font-size: 13px;
+      line-height: 1.55;
     }
 
-    /* ---------- back home + footer ---------- */
-
-    .backhome {
-      padding: clamp(36px, 5.5vh, 52px) 0 10px;
-    }
-
-    .backhome a {
-      font-size: 16px;
-      color: var(--teal);
-      border-bottom: 1px solid var(--teal);
-      padding-bottom: 3px;
-      text-decoration: none;
-      transition: opacity 0.25s ease;
-    }
-
-    .backhome a:hover {
-      opacity: 0.6;
-    }
+    /* ---------- footer ---------- */
 
     footer {
-      border-top: 1px solid var(--line);
-      margin-top: 26px;
-      padding: 16px 0 28px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 12px;
-      color: var(--muted);
+      padding: 18px 0 24px;
+      margin-top: 18px;
     }
 
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
+    footer .scope-note {
+      font-family:
+        Calibri,
+        "Segoe UI",
+        -apple-system,
+        BlinkMacSystemFont,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      font-size: 12.5px;
+      line-height: 1.55;
+
+      color: var(--muted);
+
+      margin: 0 0 16px;
+      max-width: 72ch;
+    }
+
+    footer .disclaimer {
+      font-family:
+        Calibri,
+        "Segoe UI",
+        -apple-system,
+        BlinkMacSystemFont,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      font-size: 12px;
+      line-height: 1.55;
+
+      color: var(--muted);
+      font-style: italic;
+
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+
+      margin: 0 0 12px;
+    }
+
+    footer .back {
+      margin: 0;
+
+      font-family:
+        Calibri,
+        "Segoe UI",
+        -apple-system,
+        BlinkMacSystemFont,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      font-size: 13px;
+    }
+
+    footer .back a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    footer .back a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     /* ---------- responsive ---------- */
@@ -874,7 +943,7 @@
 
   <nav class="site-nav">
     <div class="wrap nav-inner">
-      <span class="kicker">Independent data &amp; policy case study</span>
+      <span class="kicker">Independent data &amp; communication case study</span>
       <a class="back-home" href="https://yuxizhou2177.github.io/">&larr; yuxizhou2177.github.io</a>
     </div>
   </nav>
@@ -885,12 +954,12 @@
       <h1>SIDSight</h1>
 
       <p class="hero-subtitle">
-        Agrifood and resilience indicators across 8 Small Island Developing States.
+        Communicating agrifood and resilience evidence across 8 Small Island Developing States.
       </p>
 
       <p class="hero-intro">
-        If you had 5 minutes before meeting a delegation in Geneva,
-        what information would you want at hand?
+        A compact data-storytelling project designed to turn public evidence into clear country context for briefing,
+        communication and policy dialogue.
       </p>
 
 
@@ -913,7 +982,7 @@
             <span class="countup" data-target="3" data-suffix=" views">3 views</span>
           </p>
           <p class="signal-cap">
-            From comparison to context and action
+            From comparison to context and FAO initiatives
           </p>
         </div>
 
@@ -924,7 +993,7 @@
             <span class="countup" data-target="4" data-suffix=" indicators">4 indicators</span>
           </p>
           <p class="signal-cap">
-            Designed for rapid cross-country comparison
+            Selected for clear, rapid comparison
           </p>
         </div>
 
@@ -948,7 +1017,7 @@
           <h2 class="section-title">Dashboard</h2>
 
           <p class="section-copy">
-            3 views designed to move from comparison to context and action.
+            Three views turn the same evidence into comparison, country context and FAO connections.
           </p>
 
           <a class="cta-block"
@@ -979,8 +1048,8 @@
             <span class="label">Evidence</span>
             <h3>SIDS Overview</h3>
             <p>
-              Four indicators across eight countries, making cross-country
-              differences easier to spot than in a conventional table.
+              Four indicators across eight countries, designed to find
+              patterns quickly for non-specialist audiences.
             </p>
           </button>
 
@@ -989,8 +1058,8 @@
             <span class="label">Context</span>
             <h3>Country Brief</h3>
             <p>
-              One country at a time: key indicators paired with geographic and
-              policy context, and a question worth exploring.
+              Selected indicators together with geographic and policy context
+              to support briefing and country-level discussion.
             </p>
           </button>
 
@@ -999,8 +1068,8 @@
             <span class="label">Connections</span>
             <h3>FAO Connections</h3>
             <p>
-              Where country challenges connect with existing initiatives and
-              investments &mdash; dialogues, regional portfolios, ongoing projects.
+              Selected country issues connected with relevant FAO initiatives,
+              dialogues and areas of work.
             </p>
           </button>
         </div>
@@ -1012,10 +1081,8 @@
         <h2>The map</h2>
 
         <p>
-          A companion ArcGIS map showing all 8 countries, with each one's
-          indicators in the popup. The geography alone tells an interesting story:
-          the Pacific states are scattered across an ocean, while the Caribbean
-          SIDS lie much closer together.
+          A companion ArcGIS map adds a geographic lens to the same evidence, making distance and regional context
+          visible at a glance, especially the wide dispersion of Pacific SIDS compared with the Caribbean.
         </p>
 
         <a class="cta-block" href="https://arcg.is/1afyyD3" target="_blank" rel="noopener noreferrer">
@@ -1029,8 +1096,7 @@
         <details class="notes reveal-soft">
           <summary><i></i>Sources &amp; note</summary>
           <div class="nbody">
-            Indicators from World Bank, ND-GAIN and FAO. Missing values remain visible
-            rather than estimated, and years are shown as reported.
+            Indicators from World Bank, ND-GAIN and FAO.
             <a class="text-link" href="https://github.com/yuxizhou2177/SIDSight/blob/main/methodology/methodology.md">
               Full methodology and sources<span class="arrow">&rarr;</span>
             </a>
@@ -1040,16 +1106,20 @@
     </section>
   </main>
 
-  <div class="backhome">
-    <div class="wrap">
-      <a href="https://yuxizhou2177.github.io/">Back to yuxizhou2177.github.io<span class="arrow">&rarr;</span></a>
-    </div>
-  </div>
-
   <footer>
-    <div class="wrap footer-inner">
-      <span>SIDSight &mdash; an independent data &amp; policy case study</span>
-      <span>Yuxi Zhou &middot; 2026</span>
+    <div class="wrap">
+
+      <p class="disclaimer">
+        Independent data and communication case study, built for portfolio purposes.
+        Not an official FAO product and not endorsed by FAO.
+      </p>
+
+      <p class="back">
+        <a href="https://yuxizhou2177.github.io/">
+          Back to yuxizhou2177.github.io &rarr;
+        </a>
+      </p>
+
     </div>
   </footer>
 
